@@ -123,9 +123,13 @@ const generateProblem = () => {
 
     const max = 10;
     const total = Math.ceil(Math.random() * max);
-    const part = Math.floor(Math.random() * (total - 0) + 0);
     const pos = Math.round(Math.random() * (2 - 1) + 1);
+    const part = Math.floor(Math.random() * (total - 0) + 0);
+    
+    displayProblem(total, pos, part);
+}
 
+const displayProblem = (total, pos, part) => {
     const totalInput = document.getElementById('total-number');
     const partOneNumberInput = document.getElementById('part-one-number');
     const partTwoNumberInput = document.getElementById('part-two-number');
