@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Number Bonds</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header style="text-align:center">
+        <h1>Number Bonds</h1>
+    </header>
+
+    <main>
+
+        <svg>
+            <line id="line-one" class="line" />
+            <line id="line-two" class="line" />
+        </svg>
+
+        <div class="flex-col-container">
+
+            <form id="number-bond-form">
+                <div>
+                    <div id="total" class="circle">
+                        <input id="total-number" type="text" name="total-number" class="number-input">
+                    </div>
+                </div>
+
+                <div class="flex-row-container justify-content-evenly">
+
+                    <div id="part-one" class="circle">
+                        <input id="part-one-number" type="text" name="part-one-number" class="number-input">
+                    </div>
+
+                    <div id="part-two" class="circle">
+                        <input id="part-two-number" type="text" name="part-two-number" class="number-input">
+                    </div>
+
+                </div>
+
+                <div class="flex-row-container justify-content-center">
+
+                    <div>
+                        <button id="new-problem-button" class="btn btn-primary">New Problem</button>
+                    </div>
+
+                    <div>
+                        <button id="submit-button" class="btn btn-success">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+
+        <div id="modal" class="modal">
+
+            <div id="modal-content" class="modal-content">
+
+              <span id="close-modal-button" class="close">&times;</span>
+
+              <div id="modal-text" class="modal-text"></div>
+
+            </div>
+          
+        </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
