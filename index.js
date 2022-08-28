@@ -2,19 +2,31 @@ window.onload = () => {
     drawLines();
     generateProblem();
 
-    const newProblemButton = document.getElementById('new-problem-button');
-    
-    newProblemButton.addEventListener('click', (e) => {
+    document
+    .getElementById('new-problem-button')
+    .addEventListener('click', (e) => {
         e.preventDefault();
         generateProblem();
     });
 
-    const submitButton = document.getElementById('submit-button');
-    
-    submitButton.addEventListener('click', (e) => {
+    document
+    .getElementById('submit-button')
+    .addEventListener('click', (e) => {
         e.preventDefault();
         checkAnswer();
     })
+
+    document
+    .getElementById('difficulty')
+    .addEventListener('change', () => {
+        generateProblem();
+    });
+
+    document
+    .getElementById('mode')
+    .addEventListener('change', () => {
+        generateProblem();
+    });
 }
 
 window.onresize = () => {
@@ -50,8 +62,9 @@ const displayModalError = (message) => {
     modalContent.style.border = 'red 1px solid';
     modal.style.display = 'flex';
 
-    const closeButton = document.getElementById('close-modal-button');
-    closeButton.addEventListener('click', () => modal.style.display = 'none');
+    document
+    .getElementById('close-modal-button')
+    .addEventListener('click', () => modal.style.display = 'none');
 
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -121,7 +134,31 @@ const generateProblem = () => {
     const form = document.getElementById('number-bond-form');
     form.reset();
 
-    const max = 10;
+    const difficulty = document.getElementById('difficulty').value;
+    const mode = document.getElementById('mode').value;
+
+    let max;
+
+    if (difficulty == 'rookie') {
+        max = 10;
+    }
+    
+    if (difficulty == 'pro') {
+        max = 100;
+    }
+
+    if (difficulty == 'all-star') {
+        max = 1000;
+    }
+
+    if (difficulty == 'hacker') {
+        max = 1000000;
+    }
+
+    if (difficulty == 'super-hard') {
+        max = Number.MAX_SAFE_INTEGER;
+    }
+    
     const total = Math.ceil(Math.random() * max);
     const pos = Math.round(Math.random() * (2 - 1) + 1);
     const part = Math.floor(Math.random() * (total - 0) + 0);

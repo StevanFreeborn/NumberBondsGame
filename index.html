@@ -16,8 +16,22 @@
 
 <body>
 
-    <header style="text-align:center">
-        <h1>Number Bonds</h1>
+    <header class="flex-row-container justify-content-between">
+        
+        <div class="m-1">
+
+            <h1>Number Bonds</h1>
+
+        </div>
+        
+        <div class="m-1">
+
+            <a class="nav-link" href="http://google.com">About</a>
+
+            <a class="nav-link" href="http://google.com">Contact</a>
+        
+        </div>
+
     </header>
 
     <main>
@@ -27,38 +41,81 @@
             <line id="line-two" class="line" />
         </svg>
 
-        <div class="flex-col-container">
+        <div class="flex-col-container align-items-center w-100">
 
-            <form id="number-bond-form">
-                <div>
-                    <div id="total" class="circle">
-                        <input id="total-number" type="text" name="total-number" class="number-input">
-                    </div>
+            <div class="flex-row-container justify-content-evenly my-3">
+
+                <div class="flex-col-container mx-1">
+
+                    <label for="difficulty">Choose Difficulty:</label>
+
+                    <select id="difficulty" name="difficulty" class="select-menu">
+                        <option value="rookie">Rookie</option>
+                        <option value="pro">Pro</option>
+                        <option value="all-star">All-Star</option>
+                        <option value="hacker">Hacker</option>
+                        <option value="super-hard">Super Duper Duper Hard</option>
+                    </select>
+
                 </div>
 
-                <div class="flex-row-container justify-content-evenly">
+                <div class="flex-col-container mx-1">
+
+                    <label for="mode">Choose Mode:</label>
+
+                    <select id="mode" name="mode" class="select-menu">
+                        <option value="easy">Addition</option>
+                        <option value="medium">Subtraction</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <form id="number-bond-form">
+
+                <div>
+
+                    <div id="total" class="circle">
+
+                        <input id="total-number" type="text" name="total-number" class="number-input">
+                    
+                    </div>
+
+                </div>
+
+                <div class="flex-row-container justify-content-evenly w-100 mt-5">
 
                     <div id="part-one" class="circle">
+
                         <input id="part-one-number" type="text" name="part-one-number" class="number-input">
+                    
                     </div>
 
                     <div id="part-two" class="circle">
+                        
                         <input id="part-two-number" type="text" name="part-two-number" class="number-input">
+                    
                     </div>
 
                 </div>
 
-                <div class="flex-row-container justify-content-center">
+                <div class="flex-row-container justify-content-center my-3">
 
                     <div>
+
                         <button id="new-problem-button" class="btn btn-primary">New Problem</button>
+                    
                     </div>
 
                     <div>
+
                         <button id="submit-button" class="btn btn-success">Submit</button>
+                    
                     </div>
 
                 </div>
+
             </form>
 
         </div>
@@ -67,12 +124,12 @@
 
             <div id="modal-content" class="modal-content">
 
-              <span id="close-modal-button" class="close">&times;</span>
+                <span id="close-modal-button" class="close">&times;</span>
 
-              <div id="modal-text" class="modal-text"></div>
+                <div id="modal-text" class="modal-text"></div>
 
             </div>
-          
+
         </div>
 
     </main>
