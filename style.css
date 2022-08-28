@@ -53,6 +53,10 @@ body {
     align-items: center;
 }
 
+.align-items-start {
+    align-items: flex-start;
+}
+
 .justify-content-evenly {
     justify-content: space-evenly;
 }
@@ -185,8 +189,51 @@ svg {
     border-color: #198754;
 }
 
+.btn-link {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
 .nav-link {
     text-decoration: none;
     color: black;
     font-size: 1.25rem;
+    margin: 0.5rem;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-responsive {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-items: flex-start;
+    }
+    
+    #top-nav-right a {
+        display: none;
+    }
+
+    #top-nav-right.nav-responsive a {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #top-nav-right button {
+        display: none;
+    }
+}
+
+.nav-brand {
+    font-size: 2rem;
+}
+
+#nav-toggle {
+    font-size: 2rem;
+    text-align: end;
 }

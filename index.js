@@ -3,29 +3,38 @@ window.onload = () => {
     generateProblem();
 
     document
-    .getElementById('new-problem-button')
-    .addEventListener('click', (e) => {
-        e.preventDefault();
-        generateProblem();
-    });
+        .getElementById('new-problem-button')
+        .addEventListener('click', (e) => {
+            e.preventDefault();
+            generateProblem();
+        });
 
     document
-    .getElementById('submit-button')
-    .addEventListener('click', (e) => {
-        e.preventDefault();
-        checkAnswer();
-    })
+        .getElementById('number-bond-form')
+        .addEventListener('submit', (e) => {
+            e.preventDefault();
+            checkAnswer();
+        })
 
     document
-    .getElementById('difficulty')
-    .addEventListener('change', () => {
-        generateProblem();
-    });
+        .getElementById('difficulty')
+        .addEventListener('change', () => {
+            generateProblem();
+        });
 
     document
-    .getElementById('mode')
-    .addEventListener('change', () => {
-        generateProblem();
+        .getElementById('mode')
+        .addEventListener('change', () => {
+            generateProblem();
+        });
+    
+    document.getElementById('nav-toggle')
+    .addEventListener('click', () => {
+        const navBar = document.getElementById('nav-bar');
+        const navMenu = document.getElementById('top-nav-right');
+        navMenu.classList.toggle('nav-responsive');
+        navMenu.classList.toggle('nav');
+        drawLines();
     });
 }
 
@@ -56,15 +65,15 @@ const checkAnswer = () => {
 const displayModalError = (message) => {
     const modalContent = document.getElementById('modal-content');
     const modalText = document.getElementById('modal-text');
-    
+
     modalText.innerText = message;
     modalText.style.color = 'red';
     modalContent.style.border = 'red 1px solid';
     modal.style.display = 'flex';
 
     document
-    .getElementById('close-modal-button')
-    .addEventListener('click', () => modal.style.display = 'none');
+        .getElementById('close-modal-button')
+        .addEventListener('click', () => modal.style.display = 'none');
 
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -76,7 +85,7 @@ const displayModalError = (message) => {
 const displayModalSuccess = (message) => {
     const modalContent = document.getElementById('modal-content');
     const modalText = document.getElementById('modal-text');
-    
+
     modalText.innerText = message;
     modalText.style.color = 'green';
     modalContent.style.border = 'green 1px solid';
@@ -139,34 +148,62 @@ const generateProblem = () => {
 
     let max;
 
-    if (difficulty == 'rookie') {
-        max = 10;
-    }
-    
-    if (difficulty == 'pro') {
-        max = 100;
+    switch (difficulty) {
+        case 'rookie':
+            max = 10;
+            break;
+        case 'pro':
+            max = 100;
+            break;
+        case 'all-start':
+            max = 1000;
+            break;
+        case 'hacker':
+            max = 1000000;
+        default:
+            max = Number.MAX_SAFE_INTEGER;
+            break;
     }
 
-    if (difficulty == 'all-star') {
-        max = 1000;
+    if (mode == 'addition') {
+        const total = Math.ceil(Math.random() * max);
+        const partOne = Math.floor(Math.random() * (total - 0) + 0);
+        const partTwo = total - partOne;
+
+        displayAdditionProblem(partOne, partTwo);
+        return;
     }
 
-    if (difficulty == 'hacker') {
-        max = 1000000;
-    }
+    if (mode == 'subtraction') {
+        const total = Math.ceil(Math.random() * max);
+        const pos = Math.round(Math.random() * (2 - 1) + 1);
+        const part = Math.floor(Math.random() * (total - 0) + 0);
 
-    if (difficulty == 'super-hard') {
-        max = Number.MAX_SAFE_INTEGER;
+        displaySubtractionProblem(total, pos, part);
+        return;
     }
-    
-    const total = Math.ceil(Math.random() * max);
-    const pos = Math.round(Math.random() * (2 - 1) + 1);
-    const part = Math.floor(Math.random() * (total - 0) + 0);
-    
-    displayProblem(total, pos, part);
 }
 
-const displayProblem = (total, pos, part) => {
+const displayAdditionProblem = (partOne, partTwo) => {
+    const totalInput = document.getElementById('total-number');
+    const partOneNumberInput = document.getElementById('part-one-number');
+    const partTwoNumberInput = document.getElementById('part-two-number');
+
+    totalInput.setAttribute('value', '');
+    totalInput.readOnly = false;
+    totalInput.focus();
+
+    partOneNumberInput.setAttribute('value', '');
+    partOneNumberInput.setAttribute('value', partOne);
+    partOneNumberInput.readOnly = true;
+
+    partTwoNumberInput.setAttribute('value', '');
+    partTwoNumberInput.setAttribute('value', partTwo);
+    partTwoNumberInput.readOnly = false;
+
+}
+
+const displaySubtractionProblem = (total, pos, part) => {
     const totalInput = document.getElementById('total-number');
     const partOneNumberInput = document.getElementById('part-one-number');
     const partTwoNumberInput = document.getElementById('part-two-number');
@@ -179,11 +216,13 @@ const displayProblem = (total, pos, part) => {
         partOneNumberInput.setAttribute('value', part);
         partOneNumberInput.readOnly = true;
         partTwoNumberInput.readOnly = false;
+        partTwoNumberInput.focus();
     }
     else {
         partOneNumberInput.setAttribute('value', '');
         partTwoNumberInput.setAttribute('value', part);
         partTwoNumberInput.readOnly = true;
         partOneNumberInput.readOnly = false;
+        partOneNumberInput.focus();
     }
 }

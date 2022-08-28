@@ -16,25 +16,27 @@
 
 <body>
 
-    <header class="flex-row-container justify-content-between">
-        
-        <div class="m-1">
+    <header id="nav-bar" class="flex-row-container align-items-start justify-content-between">
 
-            <h1>Number Bonds</h1>
+        <div id="top-nav-left" class="m-1">
+
+            <h1 class="nav-brand">NUMBER BONDS</h1>
 
         </div>
-        
-        <div class="m-1">
+
+        <div id="top-nav-right" class="m-1">
+
+            <button id="nav-toggle" class="btn btn-link">+</button>
 
             <a class="nav-link" href="http://google.com">About</a>
 
             <a class="nav-link" href="http://google.com">Contact</a>
-        
+
         </div>
 
     </header>
 
-    <main>
+    <main class="mx-1">
 
         <svg>
             <line id="line-one" class="line" />
@@ -47,25 +49,25 @@
 
                 <div class="flex-col-container mx-1">
 
-                    <label for="difficulty">Choose Difficulty:</label>
+                    <label for="difficulty" class="fw-bold">Difficulty:</label>
 
                     <select id="difficulty" name="difficulty" class="select-menu">
                         <option value="rookie">Rookie</option>
                         <option value="pro">Pro</option>
                         <option value="all-star">All-Star</option>
                         <option value="hacker">Hacker</option>
-                        <option value="super-hard">Super Duper Duper Hard</option>
+                        <option value="impossible">Impossible</option>
                     </select>
 
                 </div>
 
                 <div class="flex-col-container mx-1">
 
-                    <label for="mode">Choose Mode:</label>
+                    <label for="mode" class="fw-bold">Mode:</label>
 
                     <select id="mode" name="mode" class="select-menu">
-                        <option value="easy">Addition</option>
-                        <option value="medium">Subtraction</option>
+                        <option value="addition">Addition</option>
+                        <option value="subtraction">Subtraction</option>
                     </select>
 
                 </div>
@@ -79,7 +81,7 @@
                     <div id="total" class="circle">
 
                         <input id="total-number" type="text" name="total-number" class="number-input">
-                    
+
                     </div>
 
                 </div>
@@ -89,13 +91,13 @@
                     <div id="part-one" class="circle">
 
                         <input id="part-one-number" type="text" name="part-one-number" class="number-input">
-                    
+
                     </div>
 
                     <div id="part-two" class="circle">
-                        
+
                         <input id="part-two-number" type="text" name="part-two-number" class="number-input">
-                    
+
                     </div>
 
                 </div>
@@ -104,14 +106,14 @@
 
                     <div>
 
-                        <button id="new-problem-button" class="btn btn-primary">New Problem</button>
-                    
+                        <button id="new-problem-button" class="btn btn-primary" type="reset">New Problem</button>
+
                     </div>
 
                     <div>
 
-                        <button id="submit-button" class="btn btn-success">Submit</button>
-                    
+                        <button id="submit-button" class="btn btn-success" type="submit">Submit</button>
+
                     </div>
 
                 </div>
