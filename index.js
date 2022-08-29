@@ -55,7 +55,6 @@ const checkAnswer = () => {
 
     if (isCorrect) {
         displayModalSuccess('Correct! Great job try another problem.');
-        return generateProblem();
     }
     else {
         return displayModalError('Incorrect! Try again.');
@@ -73,7 +72,10 @@ const displayModalError = (message) => {
 
     document
         .getElementById('close-modal-button')
-        .addEventListener('click', () => modal.style.display = 'none');
+        .addEventListener('click', () => {
+            modal.style.display = 'none';
+            closeButton.removeEventListener('click');
+        });
 
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -92,11 +94,16 @@ const displayModalSuccess = (message) => {
     modal.style.display = 'flex';
 
     const closeButton = document.getElementById('close-modal-button');
-    closeButton.addEventListener('click', () => modal.style.display = 'none');
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+        generateProblem();
+        closeButton.removeEventListener('click');
+    });
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            generateProblem();
         }
     }
 }
