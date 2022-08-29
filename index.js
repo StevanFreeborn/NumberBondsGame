@@ -1,3 +1,5 @@
+import { toggleNavMenu } from './shared.js';
+
 window.onload = () => {
     drawLines();
     generateProblem();
@@ -27,15 +29,12 @@ window.onload = () => {
         .addEventListener('change', () => {
             generateProblem();
         });
-    
+
     document.getElementById('nav-toggle')
-    .addEventListener('click', () => {
-        const navBar = document.getElementById('nav-bar');
-        const navMenu = document.getElementById('top-nav-right');
-        navMenu.classList.toggle('nav-responsive');
-        navMenu.classList.toggle('nav');
-        drawLines();
-    });
+        .addEventListener('click', () => {
+            toggleNavMenu();
+            drawLines();
+        });
 }
 
 window.onresize = () => {

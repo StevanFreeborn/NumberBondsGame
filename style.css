@@ -41,8 +41,20 @@ body {
     margin-top: 5rem;
 }
 
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
 .mx-1 {
     margin: 0 1rem 0 1rem;
+}
+
+.mx-5 {
+    margin: 0 5rem 0 5rem;
+}
+
+.my-1 {
+    margin: 1rem 0 1rem 0;
 }
 
 .my-3 {
