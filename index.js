@@ -36,13 +36,6 @@ window.onload = () => {
         navMenu.classList.toggle('nav');
         drawLines();
     });
-
-    document
-    .getElementsByTagName('input')
-    .forEach(element => {
-        element.addEventListener('focus', () => drawLines());
-        element.addEventListener('blur', () => drawLines());
-    });
 }
 
 window.onresize = () => {
