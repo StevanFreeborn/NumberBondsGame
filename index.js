@@ -206,7 +206,7 @@ const displayAdditionProblem = (partOne, partTwo) => {
 
     partTwoNumberInput.setAttribute('value', '');
     partTwoNumberInput.setAttribute('value', partTwo);
-    partTwoNumberInput.readOnly = false;
+    partTwoNumberInput.readOnly = true;
 
 }
 
