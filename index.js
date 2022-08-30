@@ -166,6 +166,7 @@ const generateProblem = () => {
             break;
         case 'hacker':
             max = 10000;
+            break;
         default:
             max = Number.MAX_SAFE_INTEGER;
             break;
