@@ -161,11 +161,11 @@ const generateProblem = () => {
         case 'pro':
             max = 100;
             break;
-        case 'all-start':
+        case 'all-star':
             max = 1000;
             break;
         case 'hacker':
-            max = 1000000;
+            max = 10000;
         default:
             max = Number.MAX_SAFE_INTEGER;
             break;
