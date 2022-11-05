@@ -30,7 +30,8 @@ window.onload = () => {
             generateProblem();
         });
 
-    document.getElementById('nav-toggle')
+    document
+        .getElementById('nav-toggle')
         .addEventListener('click', () => {
             toggleNavMenu();
             drawLines();
@@ -60,7 +61,14 @@ const checkAnswer = () => {
     }
 }
 
+const handleCloseButton = (modal, isCorrect) => {
+    modal.style.display = 'none';
+    if (isCorrect) generateProblem();
+
+}
+
 const displayModalError = (message) => {
+    const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
     const modalText = document.getElementById('modal-text');
 
@@ -73,8 +81,7 @@ const displayModalError = (message) => {
         .getElementById('close-modal-button')
         .addEventListener('click', () => {
             modal.style.display = 'none';
-            closeButton.removeEventListener('click');
-        });
+        }, { once: true });
 
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -84,6 +91,7 @@ const displayModalError = (message) => {
 }
 
 const displayModalSuccess = (message) => {
+    const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
     const modalText = document.getElementById('modal-text');
 
@@ -92,12 +100,12 @@ const displayModalSuccess = (message) => {
     modalContent.style.border = 'green 1px solid';
     modal.style.display = 'flex';
 
-    const closeButton = document.getElementById('close-modal-button');
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-        generateProblem();
-        closeButton.removeEventListener('click');
-    });
+    document
+        .getElementById('close-modal-button')
+        .addEventListener('click', () => {
+            modal.style.display = 'none';
+            generateProblem();
+        }, { once: true });
 
     window.onclick = function (event) {
         if (event.target == modal) {
