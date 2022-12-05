@@ -1,6 +1,21 @@
 import { toggleNavMenu } from './shared.js';
+const STATS_KEY = 'numberBondsStats'
 
 window.onload = () => {
+  let stats = JSON.parse(window.localStorage.getItem(STATS_KEY));
+
+  if (stats == null) {
+    stats = {
+      numRight: 0,
+      numWrong: 0,
+      currStreak: 0,
+    }
+
+    const statsString = JSON.stringify(stats);
+
+    window.localStorage.setItem(STATS_KEY, statsString);
+  }
+
   drawLines();
   generateProblem();
 
@@ -11,7 +26,7 @@ window.onload = () => {
 
   document.getElementById('number-bond-form').addEventListener('submit', e => {
     e.preventDefault();
-    checkAnswer();
+    checkAnswer(stats);
   });
 
   document.getElementById('difficulty').addEventListener('change', () => {
@@ -32,7 +47,7 @@ window.onresize = () => {
   drawLines();
 };
 
-const checkAnswer = () => {
+const checkAnswer = stats => {
   const totalValue = document.getElementById('total-number').value;
   const partOneValue = document.getElementById('part-one-number').value;
   const partTwoValue = document.getElementById('part-two-number').value;
@@ -45,10 +60,17 @@ const checkAnswer = () => {
     parseInt(totalValue) == parseInt(partOneValue) + parseInt(partTwoValue);
 
   if (isCorrect) {
+    stats.numRight += 1;
+    stats.currStreak += 1;
     displayModalSuccess('Correct! Great job try another problem.');
   } else {
-    return displayModalError('Incorrect! Try again.');
+    stats.numWrong += 1;
+    stats.currStreak = 0;
+    displayModalError('Incorrect! Try again.');
   }
+
+  const statsString = JSON.stringify(stats);
+  window.localStorage.setItem(STATS_KEY, statsString);
 };
 
 const displayModalError = message => {
