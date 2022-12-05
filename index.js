@@ -77,6 +77,8 @@ const displayModalError = (message) => {
     modalContent.style.border = 'red 1px solid';
     modal.style.display = 'flex';
 
+    new Audio('wrong-answer.mp3').play();
+
     document
         .getElementById('close-modal-button')
         .addEventListener('click', () => {
@@ -99,6 +101,8 @@ const displayModalSuccess = (message) => {
     modalText.style.color = 'green';
     modalContent.style.border = 'green 1px solid';
     modal.style.display = 'flex';
+
+    new Audio('right-answer.mp3').play();
 
     document
         .getElementById('close-modal-button')
