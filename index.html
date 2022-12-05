@@ -1,56 +1,33 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
     <title>Game</title>
-
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
     <header id="nav-bar" class="flex-row-container align-items-start justify-content-between">
-
         <div id="top-nav-left" class="m-1">
-
             <h1 class="nav-brand">NUMBER BONDS</h1>
-
         </div>
-
         <div id="top-nav-right" class="m-1">
-
             <button id="nav-toggle" class="btn btn-link">+</button>
-
-            <a class="nav-link" href="/NumberBondsGame/about.html">About</a>
-
-            <a class="nav-link" href="/NumberBondsGame/contact.html">Contact</a>
-
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html">Contact</a>
         </div>
-
     </header>
-
     <main class="mx-1">
-
         <svg>
             <line id="line-one" class="line" />
             <line id="line-two" class="line" />
         </svg>
-
         <div class="flex-col-container align-items-center w-100">
-
-            <div class="flex-row-container justify-content-evenly my-3">
-
+            <div class="flex-row-container justify-content-evenly mt-1">
                 <div class="flex-col-container mx-1">
-
                     <label for="difficulty" class="fw-bold">Difficulty:</label>
-
                     <select id="difficulty" name="difficulty" class="select-menu">
                         <option value="rookie">Rookie</option>
                         <option value="pro">Pro</option>
@@ -58,90 +35,64 @@
                         <option value="hacker">Hacker</option>
                         <option value="impossible">Impossible</option>
                     </select>
-
                 </div>
-
                 <div class="flex-col-container mx-1">
-
                     <label for="mode" class="fw-bold">Mode:</label>
-
                     <select id="mode" name="mode" class="select-menu">
                         <option value="addition">Addition</option>
                         <option value="subtraction">Subtraction</option>
                     </select>
-
                 </div>
-
             </div>
-
+            <div class="flex-row-container justify-content-evenly my-1">
+                <div class="flex-col-container my-1">
+                    <div>
+                        You've gotten <span id="numRight" class="right"></span> rignt!
+                    </div>
+                    <div>
+                        You've gotten <span id="numWrong" class="wrong"></span> wrong.
+                    </div>
+                    <div>
+                        You've gotten <span id="currStreak" class="streak"></span> rignt in a row!
+                    </div>
+                    <div style="align-self: center;">
+                        <button id="reset-score-button" class="btn btn-danger" type="button">Reset Scores</button>
+                    </div>
+                </div>
+            </div>
             <form id="number-bond-form">
-
                 <div>
-
                     <div id="total" class="circle">
-
                         <input id="total-number" type="text" name="total-number" class="number-input">
-
                     </div>
-
                 </div>
-
                 <div class="flex-row-container justify-content-evenly w-100 mt-5">
-
                     <div id="part-one" class="circle">
-
                         <input id="part-one-number" type="text" name="part-one-number" class="number-input">
-
                     </div>
-
                     <div id="part-two" class="circle">
-
                         <input id="part-two-number" type="text" name="part-two-number" class="number-input">
-
                     </div>
-
                 </div>
-
                 <div class="flex-row-container justify-content-center my-3">
-
                     <div>
-
                         <button id="new-problem-button" class="btn btn-primary" type="reset">New Problem</button>
-
                     </div>
-
                     <div>
-
                         <button id="submit-button" class="btn btn-success" type="submit">Submit</button>
-
                     </div>
-
                 </div>
-
             </form>
-
         </div>
-
         <div id="modal" class="modal">
-
             <div id="modal-content" class="modal-content">
-
                 <span id="close-modal-button" class="close">&times;</span>
-
                 <div id="modal-text" class="modal-text"></div>
-
             </div>
-
         </div>
-
     </main>
-
     <footer>
-
     </footer>
-
     <script src="index.js" type="module"></script>
-
 </body>
-
 </html>
