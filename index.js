@@ -5,20 +5,18 @@ window.onload = () => {
   let stats = JSON.parse(window.localStorage.getItem(STATS_KEY));
 
   if (stats == null) {
-    stats = {
-      numRight: 0,
-      numWrong: 0,
-      currStreak: 0,
-    }
-
-    const statsString = JSON.stringify(stats);
-
-    window.localStorage.setItem(STATS_KEY, statsString);
+    stats = setDefaultStatsState(stats);
   }
 
   displayScores(stats);
   drawLines();
   generateProblem();
+
+  document.getElementById('reset-score-button').addEventListener('click', e => {
+    e.preventDefault();
+    const resetStats = setDefaultStatsState(stats);
+    displayScores(resetStats);
+  })
 
   document.getElementById('new-problem-button').addEventListener('click', e => {
     e.preventDefault();
@@ -46,6 +44,20 @@ window.onload = () => {
 
 window.onresize = () => {
   drawLines();
+};
+
+const setDefaultStatsState = stats => {
+  stats = {
+    numRight: 0,
+    numWrong: 0,
+    currStreak: 0,
+  };
+
+  const statsString = JSON.stringify(stats);
+
+  window.localStorage.setItem(STATS_KEY, statsString);
+
+  return stats;
 };
 
 const displayScores = stats => {

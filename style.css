@@ -37,6 +37,10 @@ body {
     margin: 1rem 1rem 1rem 1rem;
 }
 
+.mt-1 {
+    margin-top: 1rem;
+}
+
 .mt-5 {
     margin-top: 5rem;
 }
@@ -201,6 +205,12 @@ svg {
     color: #fff;
     background-color: #198754;
     border-color: #198754;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: red;
+    border-color: red;
 }
 
 .btn-link {
