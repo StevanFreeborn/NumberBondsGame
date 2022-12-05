@@ -252,3 +252,21 @@ svg {
     font-size: 2rem;
     text-align: end;
 }
+
+.right {
+    color: green;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.streak {
+    color: blue;
+    font-weight: bold;
+    font-size: larger;
+}

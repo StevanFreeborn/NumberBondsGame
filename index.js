@@ -16,6 +16,7 @@ window.onload = () => {
     window.localStorage.setItem(STATS_KEY, statsString);
   }
 
+  displayScores(stats);
   drawLines();
   generateProblem();
 
@@ -47,6 +48,12 @@ window.onresize = () => {
   drawLines();
 };
 
+const displayScores = stats => {
+  document.getElementById('numRight').innerText = stats.numRight;
+  document.getElementById('numWrong').innerText = stats.numWrong;
+  document.getElementById('currStreak').innerText = stats.currStreak;
+}
+
 const checkAnswer = stats => {
   const totalValue = document.getElementById('total-number').value;
   const partOneValue = document.getElementById('part-one-number').value;
@@ -71,6 +78,7 @@ const checkAnswer = stats => {
 
   const statsString = JSON.stringify(stats);
   window.localStorage.setItem(STATS_KEY, statsString);
+  displayScores(stats);
 };
 
 const displayModalError = message => {
