@@ -51,6 +51,7 @@ const setDefaultStatsState = stats => {
     numRight: 0,
     numWrong: 0,
     currStreak: 0,
+    personalRecord: 0,
   };
 
   const statsString = JSON.stringify(stats);
@@ -64,6 +65,7 @@ const displayScores = stats => {
   document.getElementById('numRight').innerText = stats.numRight;
   document.getElementById('numWrong').innerText = stats.numWrong;
   document.getElementById('currStreak').innerText = stats.currStreak;
+  document.getElementById('personalRecord').innerText = stats.personalRecord;
 }
 
 const checkAnswer = stats => {
@@ -83,6 +85,10 @@ const checkAnswer = stats => {
     stats.currStreak += 1;
     displayModalSuccess('Correct! Great job try another problem.');
   } else {
+    if (stats.currStreak > stats.personalRecord) {
+      stats.personalRecord = stats.currStreak;
+    }
+    
     stats.numWrong += 1;
     stats.currStreak = 0;
     displayModalError('Incorrect! Try again.');
