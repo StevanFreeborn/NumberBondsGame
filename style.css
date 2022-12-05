@@ -37,6 +37,10 @@ body {
     margin: 1rem 1rem 1rem 1rem;
 }
 
+.mt-1 {
+    margin-top: 1rem;
+}
+
 .mt-5 {
     margin-top: 5rem;
 }
@@ -203,6 +207,12 @@ svg {
     border-color: #198754;
 }
 
+.btn-danger {
+    color: #fff;
+    background-color: red;
+    border-color: red;
+}
+
 .btn-link {
     margin: 0;
     padding: 0;
@@ -251,4 +261,22 @@ svg {
 #nav-toggle {
     font-size: 2rem;
     text-align: end;
+}
+
+.right {
+    color: green;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.streak {
+    color: blue;
+    font-weight: bold;
+    font-size: larger;
 }
